@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <!--Splash Screen for morning time-->
+    <RelativeLayout
+        android:visibility="gone"
+        android:id="@+id/splash_morning"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="morning.json"
+        app:lottie_loop="true" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#97FFFFFF"
+            android:fontFamily="@font/chelsea_market"
+            android:gravity="center_horizontal"
+            android:padding="20dp"
+            android:text="Amply Weather"
+            android:textAllCaps="true"
+            android:textColor="#300016"
+            android:textSize="30sp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignParentBottom="true"
+            android:gravity="center"
+            android:layout_marginBottom="5dp">
+
+            <TextView
+                android:id="@+id/splash_textMorning"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/chelsea_market"
+                android:text="Made with"
+                android:textColor="#fff"
+                android:textSize="16sp"/>
+
+            <ImageView
+                android:layout_toRightOf="@id/splash_textMorning"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_marginTop="6px"
+                android:layout_marginLeft="12px"
+                android:src="@drawable/ic_heart"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+    <!--Splash Screen for noon time-->
+    <RelativeLayout
+        android:visibility="gone"
+        android:id="@+id/splash_noon"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="noon.json"
+            app:lottie_loop="true" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#97FFFFFF"
+            android:fontFamily="@font/chelsea_market"
+            android:gravity="center_horizontal"
+            android:padding="20dp"
+            android:text="Amply Weather"
+            android:textAllCaps="true"
+            android:textColor="#300016"
+            android:textSize="30sp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignParentBottom="true"
+            android:gravity="center"
+            android:layout_marginBottom="5dp">
+
+            <TextView
+                android:id="@+id/splash_textNoon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/chelsea_market"
+                android:text="Made with"
+                android:textColor="#fff"
+                android:textSize="16sp"/>
+
+            <ImageView
+                android:layout_toRightOf="@id/splash_textNoon"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_marginTop="6px"
+                android:layout_marginLeft="12px"
+                android:src="@drawable/ic_heart"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <!--Splash Screen for night time-->
+    <RelativeLayout
+        android:id="@+id/splash_night"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="night.json"
+            app:lottie_loop="true" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/chelsea_market"
+            android:gravity="center_horizontal"
+            android:padding="20dp"
+            android:text="Amply Weather"
+            android:textAllCaps="true"
+            android:textColor="#fff"
+            android:textSize="30sp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignParentBottom="true"
+            android:gravity="center"
+            android:layout_marginBottom="5dp">
+
+            <TextView
+                android:id="@+id/splash_textNight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/chelsea_market"
+                android:text="Made with"
+                android:textColor="#fff"
+                android:textSize="16sp"/>
+
+            <ImageView
+                android:layout_toRightOf="@id/splash_textNight"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_marginTop="6px"
+                android:layout_marginLeft="12px"
+                android:src="@drawable/ic_heart"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>
