@@ -30,6 +30,9 @@
         <!--No Internet Activity-->
         <activity android:name=".NoInternet"/>
 
+        <!--Location Update-->
+        <activity android:name=".LocationUpdateActivity"/>
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
