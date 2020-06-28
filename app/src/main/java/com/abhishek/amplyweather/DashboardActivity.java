@@ -13,7 +13,7 @@ public class DashboardActivity extends AppCompatActivity {
         if (getSupportActionBar() != null)
             getSupportActionBar().hide();
 
-        setContentView(R.layout.activity_dashboard);
+        setContentView(R.layout.activity_loading);
 
     }
 

@@ -114,8 +114,8 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
             }
         }, SPLASH_TIME_OUT);
     }
-    //To check active internet connection
 
+    //To check active internet connection
     public void checkInternetAvailibility() {
         if (isInternetAvailable()) {
             new IsInternetActive().execute();
@@ -186,7 +186,6 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
 
     }
     //To fetch current Lat and Long of the user's location
-
     @Override
     public void onLocationChanged(Location location) {
         double latitude = location.getLatitude();

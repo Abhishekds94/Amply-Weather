@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#01000000">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#fff"
+        android:layout_marginLeft="60dp"
+        android:layout_marginRight="60dp"
+        android:layout_marginTop="140dp"
+        android:layout_marginBottom="140dp"
+        android:elevation="10dp"
+        app:cardCornerRadius="7dp">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/la_loader"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="loader.json"
+            app:lottie_loop="true"
+            app:lottie_speed="1"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:layout_marginTop="20dp"/>
+
+        <TextView
+            android:id="@+id/tv_pw"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/andika"
+            android:text="Please Wait.."
+            android:textColor="#000"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/tv_fetch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:fontFamily="@font/andika"
+            android:text="Amply is fetching the records!"
+            android:textColor="#000"
+            android:textSize="16sp" />
+
+    </androidx.cardview.widget.CardView>
+
+
+
+</RelativeLayout>
