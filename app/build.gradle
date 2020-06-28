@@ -34,4 +34,7 @@ dependencies {
 
     //Lottie SDK
     implementation 'com.airbnb.android:lottie:3.4.1'
+
+    //location 
+    implementation 'com.google.android.gms:play-services-location:17.0.0'
 }

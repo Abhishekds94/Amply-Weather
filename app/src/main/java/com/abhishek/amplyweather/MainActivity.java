@@ -1,9 +1,18 @@
 package com.abhishek.amplyweather;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
@@ -15,6 +24,10 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
+
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnSuccessListener;
 
 import java.io.InputStream;
 import java.net.URL;
@@ -29,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
 
     //Splash Screen Timer -> 6 seconds (or 6000 mil.seconds)
     private static int SPLASH_TIME_OUT = 6000;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,21 +66,21 @@ public class MainActivity extends AppCompatActivity {
         splashNight = (RelativeLayout) findViewById(R.id.splash_night);
 
         //Check if the time is in between 6.00 hours and 14.00 hours and set morning UI
-        if(timeOfDay >= 6 && timeOfDay < 14){
+        if (timeOfDay >= 6 && timeOfDay < 14) {
             if (splashMorning.getVisibility() != View.INVISIBLE) {
                 splashMorning.setVisibility(View.VISIBLE);
                 splashNoon.setVisibility(View.INVISIBLE);
                 splashNight.setVisibility(View.INVISIBLE);
             }
-        //Check if the time is in between 14.00 hours and 19.00 hours and set noon UI
-        }else if(timeOfDay >= 14 && timeOfDay < 19){
+            //Check if the time is in between 14.00 hours and 19.00 hours and set noon UI
+        } else if (timeOfDay >= 14 && timeOfDay < 19) {
             if (splashNoon.getVisibility() != View.INVISIBLE) {
                 splashNoon.setVisibility(View.VISIBLE);
                 splashMorning.setVisibility(View.INVISIBLE);
                 splashNight.setVisibility(View.INVISIBLE);
             }
-        //Check if the time is in between 19.00 hours and 6.00 hours and set night UI
-        }else if(timeOfDay >= 19 && timeOfDay < 6){
+            //Check if the time is in between 19.00 hours and 6.00 hours and set night UI
+        } else if (timeOfDay >= 19 && timeOfDay < 6) {
             if (splashNight.getVisibility() == View.INVISIBLE) {
                 splashNight.setVisibility(View.VISIBLE);
                 splashNoon.setVisibility(View.INVISIBLE);
@@ -158,5 +170,4 @@ public class MainActivity extends AppCompatActivity {
             super.onPreExecute();
         }
     }
-
 }
