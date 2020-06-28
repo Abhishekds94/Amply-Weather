@@ -1,17 +1,16 @@
 package com.abhishek.amplyweather;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
+import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -23,22 +22,22 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
-
-import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.tasks.OnSuccessListener;
 
 import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.Calendar;
+import java.util.List;
+import java.util.Locale;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements LocationListener {
 
     RelativeLayout splashMorning;
     RelativeLayout splashNoon;
     RelativeLayout splashNight;
+
+    //To fetch the Lat-Long
+    protected LocationManager locationManager;
 
     //Splash Screen Timer -> 6 seconds (or 6000 mil.seconds)
     private static int SPLASH_TIME_OUT = 6000;
@@ -55,6 +54,13 @@ public class MainActivity extends AppCompatActivity {
 
         //To set the res->layout for MainActivity.java
         setContentView(R.layout.activity_main);
+
+        //To check the permission for Location Manager
+        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            return;
+        }
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
 
         //Get the current system time
         Calendar c = Calendar.getInstance();
@@ -103,6 +109,7 @@ public class MainActivity extends AppCompatActivity {
         }, SPLASH_TIME_OUT);
     }
 
+    //To check active internet connection
     public void checkInternetAvailibility() {
         if (isInternetAvailable()) {
             new IsInternetActive().execute();
@@ -170,4 +177,52 @@ public class MainActivity extends AppCompatActivity {
             super.onPreExecute();
         }
     }
+
+    //To fetch current Lat and Long of the user's location
+    @Override
+    public void onLocationChanged(Location location) {
+        double latitude = location.getLatitude();
+        double longitude = location.getLongitude();
+
+        getCompleteAddressString(latitude, longitude);
+    }
+
+    @Override
+    public void onProviderDisabled(String provider) {
+        Log.d("Latitude","disable");
+    }
+
+    @Override
+    public void onProviderEnabled(String provider) {
+        Log.d("Latitude","enable");
+    }
+
+    @Override
+    public void onStatusChanged(String provider, int status, Bundle extras) {
+        Log.d("Latitude","status");
+    }
+
+    //To fetch the ZipCode of the user based on the lat and long that was retrieved
+    private String getCompleteAddressString(double latitude, double longitude) {
+        String strAdd = "";
+        Geocoder geocoder = new Geocoder(this, Locale.getDefault());
+
+        try {
+            List<Address> addresses = geocoder.getFromLocation(latitude, longitude, 1);
+
+            if (addresses != null) {
+                String postalCode = addresses.get(0).getPostalCode();
+                strAdd = postalCode;
+                Log.e("Zip","Zip"+strAdd);
+
+            } else {
+                Log.w("My Current loction", "No Address returned!");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            Log.w("My Current loction", "Canont get Address!");
+        }
+        return strAdd;
+    }
+
 }
