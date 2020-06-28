@@ -1,11 +1,11 @@
-## Planning of the app on different days
+### Planning of the app on different days
 
-#Day 0 (The day when I received the task) -
+##Day 0 (The day when I received the task) -
 1. Thought of the possible design
 2. Checked the given API on Postman
 3. Learned about Lottie
 
-#Day 1 (Started the development) - 
+##Day 1 (Started the development) - 
 1. Got the requried Anim files from Lottie
 2. Started the UI design for Splash screen
 3. Created a project (https://github.com/Abhishekds94/Amply-Weather/projects/1) to keep track of all the work
