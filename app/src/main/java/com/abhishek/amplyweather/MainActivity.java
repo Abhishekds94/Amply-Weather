@@ -1,10 +1,12 @@
 package com.abhishek.amplyweather;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
@@ -17,11 +19,13 @@ import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import java.io.InputStream;
 import java.net.URL;
@@ -32,6 +36,7 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity implements LocationListener {
 
+    Context context;
     RelativeLayout splashMorning;
     RelativeLayout splashNoon;
     RelativeLayout splashNight;
@@ -93,7 +98,8 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
                 splashMorning.setVisibility(View.INVISIBLE);
             }
         }
-        checkInternetAvailibility();
+        //checkInternetAvailibility();
+        checkLocationAvailability();
     }
 
     //Navigate to Home Activity after running the splash screen for 6 seconds -> time is based on the Animation speed for all 3 UIs
@@ -108,8 +114,8 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
             }
         }, SPLASH_TIME_OUT);
     }
-
     //To check active internet connection
+
     public void checkInternetAvailibility() {
         if (isInternetAvailable()) {
             new IsInternetActive().execute();
@@ -136,6 +142,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
     }
 
     class IsInternetActive extends AsyncTask<Void, Void, String> {
+
         InputStream is = null;
         String json = "Fail";
 
@@ -176,9 +183,10 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
             Log.e("Validating", "Validating Internet");
             super.onPreExecute();
         }
-    }
 
+    }
     //To fetch current Lat and Long of the user's location
+
     @Override
     public void onLocationChanged(Location location) {
         double latitude = location.getLatitude();
@@ -189,22 +197,22 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
 
     @Override
     public void onProviderDisabled(String provider) {
-        Log.d("Latitude","disable");
+        Log.d("Latitude", "disable");
     }
 
     @Override
     public void onProviderEnabled(String provider) {
-        Log.d("Latitude","enable");
+        Log.d("Latitude", "enable");
     }
 
     @Override
     public void onStatusChanged(String provider, int status, Bundle extras) {
-        Log.d("Latitude","status");
+        Log.d("Latitude", "status");
     }
 
     //To fetch the ZipCode of the user based on the lat and long that was retrieved
     private String getCompleteAddressString(double latitude, double longitude) {
-        String strAdd = "";
+        String zip = "";
         Geocoder geocoder = new Geocoder(this, Locale.getDefault());
 
         try {
@@ -212,8 +220,8 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
 
             if (addresses != null) {
                 String postalCode = addresses.get(0).getPostalCode();
-                strAdd = postalCode;
-                Log.e("Zip","Zip"+strAdd);
+                zip = postalCode;
+                Log.e("Zip", "Zip" + zip);
 
             } else {
                 Log.w("My Current loction", "No Address returned!");
@@ -222,7 +230,41 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
             e.printStackTrace();
             Log.w("My Current loction", "Canont get Address!");
         }
-        return strAdd;
+        return zip;
     }
 
+    private void checkLocationAvailability() {
+
+        LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        boolean gps_enabled = false;
+        boolean network_enabled = false;
+
+        try {
+            gps_enabled = lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
+        } catch (Exception ex) {
+        }
+
+        try {
+            network_enabled = lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+        } catch (Exception ex) {
+        }
+
+        if (!gps_enabled && !network_enabled) {
+            // notify user with a msg to enable GPS
+            new AlertDialog.Builder(this)
+                    .setMessage("Please Enable GPS")
+                    .setPositiveButton("Open Settings", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface paramDialogInterface, int paramInt) {
+                            Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                            startActivity(intent);
+                        }
+                    })
+                    .setNegativeButton("Cancel", null)
+                    .show();
+        } else {
+            //if GPS is enabled, check Internet and start the next activity
+            checkInternetAvailibility();
+        }
+    }
 }
