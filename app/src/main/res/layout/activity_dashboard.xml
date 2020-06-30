@@ -223,6 +223,7 @@
                     android:layout_height="wrap_content"
                     android:text="Next Day"
                     android:textSize="16dp"
+                    android:layout_marginTop="5dp"
                     android:gravity="center"
                     android:textColor="#fff"
                     android:fontFamily="@font/alegreya_sans"/>
@@ -284,7 +285,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="||"
-                        android:textSize="18sp"
+                        android:textSize="15sp"
                         android:textColor="#fff"
                         android:gravity="center"/>
 
@@ -296,7 +297,8 @@
                         android:textColor="#fff"
                         android:fontFamily="@font/alegreya_sans_light"
                         android:textSize="16sp"
-                        android:gravity="center"/>
+                        android:gravity="center"
+                        android:paddingLeft="3dp"/>
 
                     <ImageView
                         android:layout_width="13dp"
@@ -325,6 +327,7 @@
                     android:layout_height="wrap_content"
                     android:text="Next Day"
                     android:textSize="16dp"
+                    android:layout_marginTop="5dp"
                     android:gravity="center"
                     android:textColor="#fff"
                     android:fontFamily="@font/alegreya_sans"/>
@@ -386,7 +389,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="||"
-                        android:textSize="18sp"
+                        android:textSize="15sp"
                         android:textColor="#fff"
                         android:gravity="center"/>
 
@@ -398,7 +401,8 @@
                         android:textColor="#fff"
                         android:fontFamily="@font/alegreya_sans_light"
                         android:textSize="16sp"
-                        android:gravity="center"/>
+                        android:gravity="center"
+                        android:paddingLeft="3dp"/>
 
                     <ImageView
                         android:layout_width="13dp"
@@ -420,15 +424,14 @@
                 app:cardCornerRadius="5dp"
                 android:layout_marginRight="5dp"
                 android:layout_weight="1">
-    <!--
-    tv_day3
-    -->
+
                 <TextView
                     android:id="@+id/tv_day3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Next Day"
                     android:textSize="16dp"
+                    android:layout_marginTop="5dp"
                     android:gravity="center"
                     android:textColor="#fff"
                     android:fontFamily="@font/alegreya_sans"/>
@@ -490,7 +493,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="||"
-                        android:textSize="18sp"
+                        android:textSize="15sp"
                         android:textColor="#fff"
                         android:gravity="center"/>
 
@@ -502,7 +505,8 @@
                         android:textColor="#fff"
                         android:fontFamily="@font/alegreya_sans_light"
                         android:textSize="16sp"
-                        android:gravity="center"/>
+                        android:gravity="center"
+                        android:paddingLeft="3dp"/>
 
                     <ImageView
                         android:layout_width="13dp"
