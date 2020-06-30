@@ -9,6 +9,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,8 +26,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Calendar;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 public class DashboardActivity extends AppCompatActivity {
 
@@ -43,6 +47,8 @@ public class DashboardActivity extends AppCompatActivity {
     private TextView tv_currWeather;
 
     private AdView mAdView;
+
+    RelativeLayout DashboardBg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,6 +92,23 @@ public class DashboardActivity extends AppCompatActivity {
         ((FrameLayout)adContainer).addView(mAdView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
+
+        //Get the current system time
+        Calendar c = Calendar.getInstance();
+        int timeOfDay = c.get(Calendar.HOUR_OF_DAY);
+
+        DashboardBg = (RelativeLayout) findViewById(R.id.activity_dashboard);
+
+        //Check if the time is in between 6.00 hours and 14.00 hours and set morning BG
+        if (timeOfDay >= 6 && timeOfDay < 14) {
+            DashboardBg.setBackground(ContextCompat.getDrawable(this, R.drawable.morn));
+            //Check if the time is in between 14.00 hours and 19.00 hours and set noon BG
+        } else if (timeOfDay >= 14 && timeOfDay < 19) {
+            DashboardBg.setBackground(ContextCompat.getDrawable(this, R.drawable.eve));
+            //Check if the time is in between 19.00 hours and 6.00 hours and set night BG
+        } else if (timeOfDay >= 19 && timeOfDay < 6) {
+            DashboardBg.setBackground(ContextCompat.getDrawable(this, R.drawable.night));
+        }
 
     }
 

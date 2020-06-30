@@ -142,11 +142,13 @@
 
     </LinearLayout>
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/rl_temp"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="120dp">
+        android:layout_marginTop="120dp"
+        android:gravity="center">
 
         <TextView
             android:id="@+id/tv_currTemp"
@@ -154,10 +156,11 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:fontFamily="@font/alegreya_sans"
-            android:text="9"
+            android:text="109"
             android:textColor="#fff"
             android:textSize="80sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:gravity="center"/>
 
         <TextView
             android:id="@+id/tv_degFar"
@@ -165,34 +168,42 @@
             android:layout_height="wrap_content"
             android:text="\u00B0F"
             android:gravity="center"
-            android:layout_marginTop="25dp"
             android:fontFamily="@font/alegreya_sans_light"
             android:textColor="#fff"
-            android:textSize="45sp"
-            android:layout_marginLeft="40dp"
-            android:layout_alignLeft="@+id/tv_currTemp"/>
+            android:textSize="45sp"/>
 
-    </RelativeLayout>
+    </LinearLayout>
 
-    <TextView
-        android:id="@+id/tv_currWeather"
-        android:layout_width="wrap_content"
+
+    <LinearLayout
+        android:id="@+id/ll_currWeather"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/rl_temp"
-        android:text="Sunny"
-        android:textColor="#fff"
-        android:fontFamily="@font/alegreya_sans_light"
-        android:textSize="30sp"
-        android:layout_centerHorizontal="true"/>
+        android:gravity="center">
 
-    <ImageView
-        android:id="@+id/img_icon"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:src="@drawable/ic_heart"
-        android:layout_below="@+id/tv_currWeather"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"/>
+        <TextView
+            android:id="@+id/tv_currWeather"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rl_temp"
+            android:text="Sunny"
+            android:textColor="#fff"
+            android:fontFamily="@font/alegreya_sans_light"
+            android:textSize="30sp"
+            android:layout_centerHorizontal="true"/>
+
+        <ImageView
+            android:id="@+id/img_icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_heart"
+            android:layout_marginLeft="10dp"
+            android:layout_below="@+id/tv_currWeather"
+            android:layout_centerHorizontal="true"/>
+
+    </LinearLayout>
 
     <FrameLayout
         android:visibility="gone"
