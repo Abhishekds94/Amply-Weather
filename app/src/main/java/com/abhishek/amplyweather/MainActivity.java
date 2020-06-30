@@ -1,9 +1,5 @@
 package com.abhishek.amplyweather;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-
 import android.Manifest;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -16,6 +12,7 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -33,6 +30,10 @@ import java.net.URLConnection;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 public class MainActivity extends AppCompatActivity implements LocationListener {
 
@@ -59,6 +60,8 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
 
         //To set the res->layout for MainActivity.java
         setContentView(R.layout.activity_main);
+
+        checkLocationPermission();
 
         //To check the permission for Location Manager
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
@@ -99,7 +102,8 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
             }
         }
         //checkInternetAvailibility();
-        checkLocationAvailability();
+        //checkLocationAvailability();
+
     }
 
     //Navigate to Home Activity after running the splash screen for 6 seconds -> time is based on the Animation speed for all 3 UIs
@@ -232,6 +236,24 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         return zip;
     }
 
+    private void checkLocationPermission() {
+        Log.e("Here","here----------------------------------------------------------------------");
+        if (ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                && ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+//            ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+
+            finish();
+            Intent intent = new Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+            intent.setData(Uri.parse("package:" + getPackageName()));
+            startActivity(intent);
+            Toast.makeText(this, "Allow Location Permission!", Toast.LENGTH_LONG).show();
+
+        }else{
+            Log.e("Here","here!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            checkLocationAvailability();
+        }
+    }
+
     private void checkLocationAvailability() {
 
         LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
@@ -266,4 +288,5 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
             checkInternetAvailibility();
         }
     }
+
 }
