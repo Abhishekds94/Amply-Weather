@@ -3,4 +3,9 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+    <color name="white">#ffffff</color>
+    <color name="transparent">#00000000</color>
+    <color name="morning_loc">#6C008080</color>
+    <color name="noon_loc">#6FDA97A6</color>
+    <color name="night_loc">#511D0631</color>
 </resources>

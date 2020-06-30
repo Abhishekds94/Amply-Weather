@@ -514,11 +514,7 @@
 
     </RelativeLayout>
 
-
-
-
     <FrameLayout
-        android:visibility="gone"
         android:id="@+id/adMobView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

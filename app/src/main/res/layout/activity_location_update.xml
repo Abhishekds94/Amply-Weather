@@ -1,45 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:id="@+id/rl_locUpdate"
+    android:background="@drawable/loc_bg_night">
 
-    <EditText
-        android:id="@+id/et_zip"
+    <androidx.appcompat.widget.Toolbar
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@drawable/background_toolbar_translucent" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="180dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        app:cardElevation="4dp"
+        app:cardCornerRadius="20dp"
+        app:cardBackgroundColor="#FFF">
+
+        <TextView
+            android:id="@+id/tv_loc_card_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Enter a valid US zipcode to\n udpate the location"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:layout_marginTop="30dp"
+            android:padding="5dp"
+            android:textColor="@android:color/black"
+            android:background="@color/night_loc"
+            android:fontFamily="@font/alegreya_sans_light"/>
+
+        <EditText
+            android:id="@+id/et_zip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="120dp"
+            android:hint="Enter a valid Zip Code"
+            android:text=""
+            android:gravity="center"
+            android:textAlignment="center"
+            android:fontFamily="@font/alegreya_sans_light"
+            android:textColorHint="@android:color/black"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:inputType="number"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/bt_updateLoc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Update"
+            android:fontFamily="@font/alegreya_sans"
+            android:layout_gravity="center_horizontal"
+            android:onClick="onClickUpdate"
+            android:textSize="15dp"
+            android:layout_marginTop="200dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginLeft="50dp"
+            android:background="@drawable/btnbg_night"
+            android:textColor="@android:color/black"/>
+
+
+    </androidx.cardview.widget.CardView>
+
+    <FrameLayout
+        android:id="@+id/adMobView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="1dp"
-        android:hint="enter your zip"
-        android:text=""
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/bt_updateLoc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Update"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_zip"
-        android:onClick="onClickUpdate"/>
-
-    <ImageView
-        android:id="@+id/img_icon"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bt_updateLoc"
-        android:layout_marginTop="20dp"/>
-    <TextView
-        android:id="@+id/textview1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Home"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/img_icon"
-        android:layout_marginTop="20dp"/>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
