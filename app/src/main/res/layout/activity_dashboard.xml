@@ -142,7 +142,6 @@
 
     </LinearLayout>
 
-
     <RelativeLayout
         android:id="@+id/rl_temp"
         android:layout_width="match_parent"
@@ -154,7 +153,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-
             android:fontFamily="@font/alegreya_sans"
             android:text="9"
             android:textColor="#fff"

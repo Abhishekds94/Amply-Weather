@@ -35,6 +35,13 @@ public class DashboardActivity extends AppCompatActivity {
     private ImageView img;
     private TextView contentTV;
 
+    private TextView tv_city;
+    private TextView tv_state;
+    private TextView tv_highTempVal;
+    private TextView tv_lowTempVal;
+    private TextView tv_currTemp;
+    private TextView tv_currWeather;
+
     private AdView mAdView;
 
     @Override
@@ -51,7 +58,15 @@ public class DashboardActivity extends AppCompatActivity {
 
         //Initialize all the required views to display the data
         img = findViewById(R.id.img_icon);
+
         contentTV = findViewById(R.id.textview1);
+        tv_city = findViewById(R.id.tv_city);
+        tv_state = findViewById(R.id.tv_state);
+        tv_highTempVal = findViewById(R.id.tv_highTempVal);
+        tv_lowTempVal = findViewById(R.id.tv_lowTempVal);
+        tv_currTemp = findViewById(R.id.tv_currTemp);
+        tv_currWeather = findViewById(R.id.tv_currWeather);
+
 
         //Call the method to initialize data
         initData();
@@ -62,15 +77,6 @@ public class DashboardActivity extends AppCompatActivity {
             public void onInitializationComplete(InitializationStatus initializationStatus) {
             }
         });
-/*        mAdView = findViewById(R.id.adView);
-
-        //Request for an ad to build
-        AdRequest adRequest = new AdRequest.Builder().build();
-        //Set AdSize and UnitID
-        AdView adView = new AdView(this);
-        adView.setAdSize(AdSize.BANNER);
-        adView.setAdUnitId("ca-app-pub-3940256099942544/6300978111");
-        mAdView.loadAd(adRequest);*/
 
         View adContainer = findViewById(R.id.adMobView);
 
@@ -103,20 +109,20 @@ public class DashboardActivity extends AppCompatActivity {
                     JSONObject today = obj.getJSONObject("today");
                     String city = today.getString("city");
                     String state = today.getString("state");
-                    String currentTemper = today.getString("temperature");
+                    String currentTemper = String.valueOf(today.getInt("temperature"));
                     String currweather = today.getString("temperatureDesc");
-                    String highTemper = today.getString("highTemperature");
-                    String lowTemper = today.getString("lowTemperature");
+                    String highTemper = String.valueOf(today.getInt("highTemperature"));
+                    String lowTemper = String.valueOf(today.getInt("lowTemperature"));
                     String iconUrl = today.getString("iconLink");
                     JSONArray dailyArr = obj.getJSONArray("daily");
                     JSONObject next1day = dailyArr.getJSONObject(1);
-                    String next1Temper = next1day.getString("comfort");
+                    String next1Temper = String.valueOf(today.getInt("comfort"));
                     String next1highTemper = next1day.getString("weekday");
                     JSONObject next2day = dailyArr.getJSONObject(2);
-                    String next2Temper = next2day.getString("comfort");
+                    String next2Temper = String.valueOf(today.getInt("comfort"));
                     String next2highTemper = next2day.getString("weekday");
                     JSONObject next3day = dailyArr.getJSONObject(3);
-                    String next3Temper = next3day.getString("comfort");
+                    String next3Temper = String.valueOf(today.getInt("comfort"));
                     String next3highTemper = next3day.getString("weekday");
 
                     //Picasso to render the weather icons and replace the default image
@@ -130,7 +136,24 @@ public class DashboardActivity extends AppCompatActivity {
                             next2Temper + ", " + next2highTemper + "\n nextThe day After tomorrow: " + next3Temper + ", " +
                             next3highTemper;
 
+                    String UserCity = city;
+                    String UserState = state;
+                    String HighTemp = highTemper;
+                    String LowTemp = lowTemper;
+                    String CurrTemp = currentTemper;
+                    String CurrWeather = currweather;
+
+                    tv_city.setText(UserCity+", ");
+                    tv_state.setText(UserState);
+                    tv_highTempVal.setText(HighTemp);
+                    tv_lowTempVal.setText(LowTemp);
+                    tv_currTemp.setText(CurrTemp);
+                    tv_currWeather.setText(CurrWeather);
+
+
                     contentTV.setText(content);
+
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -160,7 +183,7 @@ public class DashboardActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if (resultCode == RESULT_OK) {
             if (requestCode == 1002) {
-                update_data(data.getStringExtra("json"));
+                Log.e("Success","Success");
             }
         }
         super.onActivityResult(requestCode, resultCode, data);
@@ -200,7 +223,23 @@ public class DashboardActivity extends AppCompatActivity {
                     next2Temper + ", " + next2highTemper + "\n nextThe day After tomorrow: " + next3Temper + ", " +
                     next3highTemper;
 
+            String UserCity = city;
+            String UserState = state;
+            String HighTemp = highTemper;
+            String LowTemp = lowTemper;
+            String CurrTemp = currentTemper;
+            String CurrWeather = currweather;
+
+            tv_city.setText(UserCity);
+            tv_state.setText(UserState);
+            tv_highTempVal.setText(HighTemp);
+            tv_lowTempVal.setText(LowTemp);
+            tv_currTemp.setText(CurrTemp);
+            tv_currWeather.setText(CurrWeather);
+
+
             contentTV.setText(content);
+
         } catch (Exception ex) {
             Log.e("update_data", "update_data");
         }
