@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="1dp"
         android:hint="enter your zip"
-        android:text="62704"
+        android:text=""
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -23,6 +23,23 @@
         android:layout_marginTop="10dp"
         android:text="Update"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_zip" />
+        app:layout_constraintTop_toBottomOf="@+id/et_zip"
+        android:onClick="onClickUpdate"/>
+
+    <ImageView
+        android:id="@+id/img_icon"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bt_updateLoc"
+        android:layout_marginTop="20dp"/>
+    <TextView
+        android:id="@+id/textview1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Home"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_icon"
+        android:layout_marginTop="20dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
