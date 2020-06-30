@@ -13,9 +13,9 @@
     <application
         android:name=".Network.App"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/icon"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
@@ -25,7 +25,8 @@
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-3940256099942544~3347511713"/>
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -34,14 +35,17 @@
         </activity>
 
         <!--Initialize Dashboard Activity-->
-        <activity android:name=".DashboardActivity" />
+        <activity android:name=".DashboardActivity"
+            android:screenOrientation="portrait"/>
 
         <!--No Internet Activity-->
-        <activity android:name=".NoInternet" />
+        <activity android:name=".NoInternet"
+            android:screenOrientation="portrait"/>
 
         <!--Location Update-->
         <activity android:name=".LocationUpdateActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"/>
 
         <meta-data
             android:name="preloaded_fonts"
