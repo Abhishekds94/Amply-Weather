@@ -1,7 +1,11 @@
 package com.abhishek.amplyweather;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -26,6 +30,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.InputStream;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.Calendar;
 
 import androidx.annotation.Nullable;
@@ -81,6 +88,8 @@ public class DashboardActivity extends AppCompatActivity {
         getSupportActionBar().hide();
 
         setContentView(R.layout.activity_dashboard);
+
+        checkInternetAvailibility();
 
         //Initialize all the required views to display the data
         img = findViewById(R.id.img_icon);
@@ -389,4 +398,75 @@ public class DashboardActivity extends AppCompatActivity {
             Log.e("update_data", "update_data");
         }
     }
+
+    //To check active internet connection
+    public void checkInternetAvailibility() {
+        if (isInternetAvailable()) {
+            Log.e("Yes","Yes");
+        } else {
+            Intent intent = new Intent(DashboardActivity.this, NoInternet.class);
+            startActivity(intent);
+            finish();
+        }
+    }
+
+    public boolean isInternetAvailable() {
+        try {
+
+            ConnectivityManager connectivityManager
+                    = (ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+            return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+        } catch (Exception e) {
+
+            Log.e("isInternetAvailable:", e.toString());
+            return false;
+        }
+    }
+
+    class IsInternetActive extends AsyncTask<Void, Void, String> {
+
+        InputStream is = null;
+        String json = "Fail";
+
+        @Override
+        protected String doInBackground(Void... params) {
+            try {
+                URL strUrl = new URL("http://icons.iconarchive.com/icons/designbolts/handstitch-social/24/Android-icon.png");
+                //Icon for testing the server
+
+                URLConnection connection = strUrl.openConnection();
+                connection.setDoOutput(true);
+                is = connection.getInputStream();
+                json = "Success";
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                json = "Fail";
+            }
+            return json;
+
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            if (result != null) {
+                if (result.equals("Fail")) {
+                    Log.e("Internet Not Active", "Internet Not Active");
+                } else {
+                    Log.e("Internet Active", "Internet Active" + result);
+                }
+            } else {
+                Log.e("Internet Not Active", "Internet Not Active");
+            }
+        }
+
+        @Override
+        protected void onPreExecute() {
+            Log.e("Validating", "Validating Internet");
+            super.onPreExecute();
+        }
+
+    }
+
 }
