@@ -37,7 +37,6 @@ public class DashboardActivity extends AppCompatActivity {
     private static final String TAG = DashboardActivity.class.getSimpleName();
 
     private ImageView img;
-    private TextView contentTV;
 
     private TextView tv_city;
     private TextView tv_state;
@@ -86,7 +85,6 @@ public class DashboardActivity extends AppCompatActivity {
         //Initialize all the required views to display the data
         img = findViewById(R.id.img_icon);
 
-        contentTV = findViewById(R.id.textview1);
         tv_city = findViewById(R.id.tv_city);
         tv_state = findViewById(R.id.tv_state);
         tv_highTempVal = findViewById(R.id.tv_highTempVal);
@@ -169,7 +167,6 @@ public class DashboardActivity extends AppCompatActivity {
             public void onEventCallBack(JSONObject obj) {
                 try {
                     dialog.dismiss();
-                    //skyDescription
                     JSONObject today = obj.getJSONObject("today");
                     String city = today.getString("city");
                     String state = today.getString("state");
@@ -234,11 +231,6 @@ public class DashboardActivity extends AppCompatActivity {
                             .error(R.drawable.ic_heart)
                             .into(iv_day3Icon, null);
 
-                    String content = "city: " + city + "\nstate: " + state + "\ncurrentTemper: " + currentTemper + "\ncurrweather: " + currweather + "\n highTemper: " + highTemper +
-                            "\n lowTemper:" + lowTemper + "\n tomorrow: " + next1Temper + ", " + next1highTemper + "\n nextTomorrow:" +
-                            next2Temper + ", " + next2highTemper + "\n nextThe day After tomorrow: " + next3Temper + ", " +
-                            next3highTemper;
-
                     tv_city.setText(city+", ");
                     tv_state.setText(state);
                     tv_highTempVal.setText(highTemper+ " \u00B0");
@@ -263,9 +255,6 @@ public class DashboardActivity extends AppCompatActivity {
                     tv_day3Weather.setText(next3TemperDesc);
                     tv_day3High.setText(next3highTemper+" \u00B0");
                     tv_day3Low.setText(next3lowTemper+" \u00B0");
-
-                    contentTV.setText(content);
-
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -310,48 +299,91 @@ public class DashboardActivity extends AppCompatActivity {
             JSONObject today = obj.getJSONObject("today");
             String city = today.getString("city");
             String state = today.getString("state");
-            String currentTemper = today.getString("temperature");
-            String currweather = today.getString("temperatureDesc");
-            String highTemper = today.getString("highTemperature");
-            String lowTemper = today.getString("lowTemperature");
-            String iconUrl = today.getString("iconLink");
-            JSONArray dailyArr = obj.getJSONArray("daily");
-            JSONObject next1day = dailyArr.getJSONObject(1);
-            String next1Temper = next1day.getString("comfort");
-            String next1highTemper = next1day.getString("weekday");
-            JSONObject next2day = dailyArr.getJSONObject(2);
-            String next2Temper = next2day.getString("comfort");
-            String next2highTemper = next2day.getString("weekday");
-            JSONObject next3day = dailyArr.getJSONObject(3);
-            String next3Temper = next3day.getString("comfort");
-            String next3highTemper = next3day.getString("weekday");
 
+            String currentTemper = String.valueOf(today.getInt("temperature"));
+            String currweather = today.getString("temperatureDesc");
+
+            String highTemper = String.valueOf(today.getInt("highTemperature"));
+            String lowTemper = String.valueOf(today.getInt("lowTemperature"));
+
+            String iconUrl = today.getString("iconLink");
+
+            JSONArray dailyArr = obj.getJSONArray("daily");
+
+            JSONObject next1day = dailyArr.getJSONObject(1);
+            String next1 = next1day.getString("weekday");
+            String next1Temper = String.valueOf(next1day.getInt("comfort"));
+            String next1TemperDesc = next1day.getString("temperatureDesc");
+            String next1highTemper = String.valueOf(next1day.getInt("highTemperature"));
+            String next1lowTemper = String.valueOf(next1day.getInt("lowTemperature"));
+            String next1iconUrl = next1day.getString("iconLink");
+
+            JSONObject next2day = dailyArr.getJSONObject(2);
+            String next2 = next2day.getString("weekday");
+            String next2Temper = String.valueOf(next2day.getInt("comfort"));
+            String next2TemperDesc = next2day.getString("temperatureDesc");
+            String next2highTemper = String.valueOf(next2day.getInt("highTemperature"));
+            String next2lowTemper = String.valueOf(next2day.getInt("lowTemperature"));
+            String next2iconUrl = next2day.getString("iconLink");
+
+            JSONObject next3day = dailyArr.getJSONObject(3);
+            String next3 = next3day.getString("weekday");
+            String next3Temper = String.valueOf(next3day.getInt("comfort"));
+            String next3TemperDesc = next3day.getString("temperatureDesc");
+            String next3highTemper = String.valueOf(next3day.getInt("highTemperature"));
+            String next3lowTemper = String.valueOf(next3day.getInt("lowTemperature"));
+            String next3iconUrl = next3day.getString("iconLink");
+
+
+            //Picasso to render the weather icons and replace the default image
             Picasso.with(DashboardActivity.this).load(iconUrl).fit().centerCrop()
                     .placeholder(R.drawable.ic_heart)
                     .error(R.drawable.ic_heart)
                     .into(img, null);
 
-            String content = "city: " + city + "\nstate: " + state + "\ncurrentTemper: " + currentTemper + "\ncurrweather: " + currweather + "\n highTemper: " + highTemper +
-                    "\n lowTemper:" + lowTemper + "\n tomorrow: " + next1Temper + ", " + next1highTemper + "\n nextTomorrow:" +
-                    next2Temper + ", " + next2highTemper + "\n nextThe day After tomorrow: " + next3Temper + ", " +
-                    next3highTemper;
+            //Picasso to render the weather icons and replace the default image
+            Picasso.with(DashboardActivity.this).load(next1iconUrl).fit().centerCrop()
+                    .placeholder(R.drawable.ic_heart)
+                    .error(R.drawable.ic_heart)
+                    .into(iv_day1Icon, null);
 
-            String UserCity = city;
-            String UserState = state;
-            String HighTemp = highTemper;
-            String LowTemp = lowTemper;
-            String CurrTemp = currentTemper;
-            String CurrWeather = currweather;
+            //Picasso to render the weather icons and replace the default image
+            Picasso.with(DashboardActivity.this).load(next2iconUrl).fit().centerCrop()
+                    .placeholder(R.drawable.ic_heart)
+                    .error(R.drawable.ic_heart)
+                    .into(iv_day2Icon, null);
 
-            tv_city.setText(UserCity);
-            tv_state.setText(UserState);
-            tv_highTempVal.setText(HighTemp);
-            tv_lowTempVal.setText(LowTemp);
-            tv_currTemp.setText(CurrTemp);
-            tv_currWeather.setText(CurrWeather);
+            //Picasso to render the weather icons and replace the default image
+            Picasso.with(DashboardActivity.this).load(next3iconUrl).fit().centerCrop()
+                    .placeholder(R.drawable.ic_heart)
+                    .error(R.drawable.ic_heart)
+                    .into(iv_day3Icon, null);
 
+            tv_city.setText(city+", ");
+            tv_state.setText(state);
+            tv_highTempVal.setText(highTemper+ " \u00B0");
+            tv_lowTempVal.setText(lowTemper+ " \u00B0");
+            tv_currTemp.setText(currentTemper);
+            tv_currWeather.setText(currweather);
 
-            contentTV.setText(content);
+            tv_day1.setText(next1);
+            tv_day1Temp.setText(next1Temper+ " \u00B0");
+            tv_day1Weather.setText(next1TemperDesc);
+            tv_day1High.setText(next1highTemper+" \u00B0");
+            tv_day1Low.setText(next1lowTemper+" \u00B0");
+
+            tv_day2.setText(next2);
+            tv_day2Temp.setText(next2Temper+ " \u00B0");
+            tv_day2Weather.setText(next2TemperDesc);
+            tv_day2High.setText(next2highTemper+" \u00B0");
+            tv_day2Low.setText(next2lowTemper+" \u00B0");
+
+            tv_day3.setText(next3);
+            tv_day3Temp.setText(next3Temper+ " \u00B0");
+            tv_day3Weather.setText(next3TemperDesc);
+            tv_day3High.setText(next3highTemper+" \u00B0");
+            tv_day3Low.setText(next3lowTemper+" \u00B0");
+
 
         } catch (Exception ex) {
             Log.e("update_data", "update_data");
