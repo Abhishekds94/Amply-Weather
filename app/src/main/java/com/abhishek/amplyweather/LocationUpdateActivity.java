@@ -10,7 +10,6 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -34,6 +33,7 @@ import java.util.Map;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 
 public class LocationUpdateActivity extends AppCompatActivity {
@@ -81,9 +81,10 @@ public class LocationUpdateActivity extends AppCompatActivity {
         AdView mAdView = new AdView(this);
         mAdView.setAdSize(AdSize.BANNER);
         mAdView.setAdUnitId("ca-app-pub-3940256099942544/6300978111");
-        ((FrameLayout)adContainer).addView(mAdView);
+        ((CardView)adContainer).addView(mAdView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
+        Log.e("adRequest","Ads"+adRequest);
 
         //Get the current system time
         Calendar c = Calendar.getInstance();

@@ -516,7 +516,7 @@
 
     <FrameLayout
         android:id="@+id/adMobView"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"/>
