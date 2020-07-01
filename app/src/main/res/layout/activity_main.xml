@@ -19,7 +19,6 @@
         app:lottie_autoPlay="true"
         app:lottie_fileName="morning.json"
         app:lottie_loop="true"
-        android:scaleType="fitXY"
         app:lottie_speed="3"/>
 
         <TextView
@@ -75,7 +74,6 @@
             android:layout_height="match_parent"
             app:lottie_autoPlay="true"
             app:lottie_fileName="noon.json"
-            android:scaleType="fitXY"
             app:lottie_loop="true" />
 
         <TextView
@@ -131,7 +129,6 @@
             app:lottie_autoPlay="true"
             app:lottie_fileName="night.json"
             app:lottie_loop="true"
-            android:scaleType="fitXY"
             app:lottie_speed="3"/>
 
         <TextView
