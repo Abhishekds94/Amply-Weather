@@ -1,5 +1,10 @@
 package com.abhishek.amplyweather;
 
+<<<<<<< HEAD
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.os.Handler;
+=======
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -7,6 +12,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
+>>>>>>> 35f874297f18b44f2bb5c9e866dbe67995b6bd3d
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -17,6 +23,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+<<<<<<< HEAD
+import com.abhishek.amplyweather.Network.API;
+import com.abhishek.amplyweather.Network.Weather;
+=======
 import com.abhishek.amplyweather.Network.APIManager;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdSize;
@@ -25,23 +35,32 @@ import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.squareup.picasso.Picasso;
+>>>>>>> 35f874297f18b44f2bb5c9e866dbe67995b6bd3d
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+<<<<<<< HEAD
+import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+
+=======
 import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.Calendar;
 
 import androidx.annotation.Nullable;
+>>>>>>> 35f874297f18b44f2bb5c9e866dbe67995b6bd3d
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 public class DashboardActivity extends AppCompatActivity {
 
     private static final String TAG = DashboardActivity.class.getSimpleName();
+    private ArrayList<Weather> weatherArrayList = new ArrayList<>();
 
     private ImageView img;
 
@@ -89,6 +108,70 @@ public class DashboardActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_dashboard);
 
+<<<<<<< HEAD
+        URL weatherURL = API.buildURLForWeather();
+        new FetchWeatherDetails().execute(weatherURL);
+        Log.e(TAG,"WeatherURL:"+weatherURL);
+
+    }
+
+    private class FetchWeatherDetails extends AsyncTask<URL, Void, String>{
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected String doInBackground(URL... urls) {
+            URL weatherURL = urls[0];
+            String weatherSearchResults = null;
+
+            try {
+                weatherSearchResults = API.getResponseFromHttpUrl(weatherURL);
+            } catch (IOException e){
+                e.printStackTrace();
+            }
+            Log.e("test","SearchResults"+weatherSearchResults);
+            return weatherSearchResults;
+        }
+
+        @Override
+        protected void onPostExecute(String weatherSearchResults) {
+            
+            if (weatherSearchResults != null && !weatherSearchResults.equals("")){
+                weatherArrayList = parseJSON(weatherSearchResults);
+            }
+            
+            super.onPostExecute(weatherSearchResults);
+        }
+
+        private ArrayList<Weather> parseJSON(String weatherSearchResults) {
+            Log.e("grere","here1");
+            if (weatherArrayList != null){
+                Log.e("grere","here2");
+                weatherArrayList.clear();
+            }
+
+            if (weatherSearchResults != null){
+                try {
+                    JSONObject rootObject = new JSONObject(weatherSearchResults);
+                    JSONArray results = rootObject.getJSONArray("today");
+                    Log.e("grere","here3");
+
+                    for (int i=0; i<results.length();i++){
+                        Weather weather = new Weather();
+                        JSONObject resultsObj = results.getJSONObject(i);
+                        String currTemp = resultsObj.getString("comfort");
+                        weather.setComfort(currTemp);
+
+                        Log.e("Curr temp","Curr Tempr-"+currTemp);
+
+                    }
+
+                    Log.e("grere","list"+weatherArrayList);
+                    return weatherArrayList;
+=======
         checkInternetAvailibility();
 
         //Initialize all the required views to display the data
@@ -264,11 +347,16 @@ public class DashboardActivity extends AppCompatActivity {
                     tv_day3Weather.setText(next3TemperDesc);
                     tv_day3High.setText(next3highTemper+" \u00B0");
                     tv_day3Low.setText(next3lowTemper+" \u00B0");
+>>>>>>> 35f874297f18b44f2bb5c9e866dbe67995b6bd3d
 
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
             }
+<<<<<<< HEAD
+            return null;
+        }
+=======
 
             @Override
             public void onEventInternetError(Exception e) {
@@ -468,6 +556,7 @@ public class DashboardActivity extends AppCompatActivity {
             super.onPreExecute();
         }
 
+>>>>>>> 35f874297f18b44f2bb5c9e866dbe67995b6bd3d
     }
 
 }
