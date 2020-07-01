@@ -33,8 +33,8 @@ import static androidx.test.espresso.matcher.ViewMatchers.withId;
 
 public class FirstTest {
     @Rule
-    public ActivityTestRule<DashboardActivity> mActivityRule = new ActivityTestRule<>(
-            DashboardActivity.class);
+    public ActivityTestRule<MainActivity> mActivityRule = new ActivityTestRule<>(
+            MainActivity.class);
 
     private String zip = "64112";
     private String city = "Kansas City";
@@ -47,6 +47,7 @@ public class FirstTest {
 
     @Test
     public void test1ChatId() {
+        onView(isRoot()).perform(waitFor(6000));
         onView(withId(R.id.tv_city)).check(matches(isDisplayed()));
         onView(withId(R.id.tv_state)).check(matches(isDisplayed()));
         onView(withId(R.id.tv_highTempVal)).check(matches(isDisplayed()));
@@ -82,9 +83,7 @@ public class FirstTest {
 
         onView(withId(R.id.bt_updateLoc)).perform(click());
         onView(isRoot()).perform(waitFor(3000));
-        //onView(withId(R.id.tv_city)).check(matches(withText(city)));
         onView(withId(R.id.tv_city)).check(matches(isDisplayed()));
-//        onView(withId(R.id.tv_state)).check(matches(withText(state)));
     }
 
     public static ViewAction waitFor(long delay) {
