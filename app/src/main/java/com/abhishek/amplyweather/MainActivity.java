@@ -237,10 +237,8 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
     }
 
     private void checkLocationPermission() {
-        Log.e("Here","here----------------------------------------------------------------------");
         if (ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
                 && ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-//            ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
 
             finish();
             Intent intent = new Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
@@ -249,7 +247,6 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
             Toast.makeText(this, "Allow Location Permission!", Toast.LENGTH_LONG).show();
 
         }else{
-            Log.e("Here","here!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
             checkLocationAvailability();
         }
     }

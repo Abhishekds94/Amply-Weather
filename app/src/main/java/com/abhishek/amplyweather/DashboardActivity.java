@@ -396,6 +396,7 @@ public class DashboardActivity extends AppCompatActivity {
 
         } catch (Exception ex) {
             Log.e("update_data", "update_data");
+            Toast.makeText(this, "Check the entered zip code", Toast.LENGTH_SHORT).show();
         }
     }
 
