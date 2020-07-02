@@ -11,4 +11,5 @@
     <string name="enterZipText">Enter a valid US zipcode to\n udpate the location</string>
     <string name="et_hint">Enter a valid Zip Code</string>
     <string name="update">Update</string>
+    <string name="far_sym">°F</string>
 </resources>

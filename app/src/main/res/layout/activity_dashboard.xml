@@ -147,7 +147,7 @@
                 android:id="@+id/tv_degFar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
+                android:text="@string/far_sym"
                 android:gravity="center"
                 android:fontFamily="@font/alegreya_sans_light"
                 android:textColor="#fff"
