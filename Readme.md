@@ -47,11 +47,11 @@ You can build the app with Android Studio or with `./gradlew assembleDebug` comm
 
 
 ## Applicaiton target platform
-`minSdkVersion` - 22
-`targetSdkVersion` - 29
-`compileSdkVersion` - 29
-`buildToolsVersion` - 29.0.3
-`gradle` - 3.5.1
+*`minSdkVersion` - 22
+*`targetSdkVersion` - 29
+*`compileSdkVersion` - 29
+*`buildToolsVersion` - 29.0.3
+*`gradle` - 3.5.1
 
 
 ## Screenshots
