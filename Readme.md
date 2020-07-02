@@ -47,16 +47,70 @@ You can build the app with Android Studio or with `./gradlew assembleDebug` comm
 
 
 ## Applicaiton target platform
-`minSdkVersion` - 22
-`targetSdkVersion` - 29
-`compileSdkVersion` - 29
-`buildToolsVersion` - 29.0.3
-`gradle` - 3.5.1
+* `minSdkVersion` - 22
+* `targetSdkVersion` - 29
+* `compileSdkVersion` - 29
+* `buildToolsVersion` - 29.0.3
+* `gradle` - 3.5.1
 
 
 ## Screenshots
 
+###### Morning UI
+<div>
+  <img src="https://github.com/Abhishekds94/Amply-Weather/blob/master/screenshots/morning_splash.jpg" width="220">
 
+  <img src="https://github.com/Abhishekds94/Amply-Weather/blob/master/screenshots/morning_dashboard.jpg" width="220">
+
+  <img src="https://github.com/Abhishekds94/Amply-Weather/blob/master/screenshots/morning_locUpdate.jpg" width="220">
+  
+  <img src="https://github.com/Abhishekds94/Amply-Weather/blob/master/screenshots/morning_locUpdateResult.jpg" width="220">
+  
+  <img src="https://github.com/Abhishekds94/Amply-Weather/blob/master/screenshots/morning_locUpdateError1.jpg" width="220">
+  
+  <img src="https://github.com/Abhishekds94/Amply-Weather/blob/master/screenshots/morning_locUpdateError2.jpg" width="220">
+  
+  <img src="https://github.com/Abhishekds94/Amply-Weather/blob/master/screenshots/morning_locUpdateErrorResult.jpg" width="220">
+</div>
+
+
+###### Noon UI
+<div>
+  <img src="https://github.com/Abhishekds94/Amply-Weather/blob/master/screenshots/noon_splash.jpg" width="220">
+
+  <img src="https://github.com/Abhishekds94/Amply-Weather/blob/master/screenshots/noon_dashboard.jpg" width="220">
+
+  <img src="https://github.com/Abhishekds94/Amply-Weather/blob/master/screenshots/noon_locUpdate.jpg" width="220">
+  
+  <img src="https://github.com/Abhishekds94/Amply-Weather/blob/master/screenshots/noon_locUpdateResult.jpg" width="220">
+  
+  <img src="https://github.com/Abhishekds94/Amply-Weather/blob/master/screenshots/noon_locUpdateError1.jpg" width="220">
+  
+  <img src="https://github.com/Abhishekds94/Amply-Weather/blob/master/screenshots/noon_locUpdateError2.jpg" width="220">
+  
+  <img src="https://github.com/Abhishekds94/Amply-Weather/blob/master/screenshots/noon_locUpdateErrorResult.jpg" width="220">
+</div>
+
+
+###### Night UI
+<div>
+  <img src="https://github.com/Abhishekds94/Amply-Weather/blob/master/screenshots/night_splash.jpg" width="220">
+
+  <img src="https://github.com/Abhishekds94/Amply-Weather/blob/master/screenshots/night_dashboard.jpg" width="220">
+
+  <img src="https://github.com/Abhishekds94/Amply-Weather/blob/master/screenshots/night_locUpdate.jpg" width="220">
+  
+  <img src="https://github.com/Abhishekds94/Amply-Weather/blob/master/screenshots/night_locUpdateResult.jpg" width="220">
+  
+  <img src="https://github.com/Abhishekds94/Amply-Weather/blob/master/screenshots/night_locUpdateError1.jpg" width="220">
+  
+  <img src="https://github.com/Abhishekds94/Amply-Weather/blob/master/screenshots/night_locUpdateError2.jpg" width="220">
+  
+  <img src="https://github.com/Abhishekds94/Amply-Weather/blob/master/screenshots/night_locUpdateErrorResult.jpg" width="220">
+</div>
+
+###### Notification at 7:30 hours everyday
+  <img src="https://github.com/Abhishekds94/Amply-Weather/blob/master/screenshots/notification.jpg" width="220">
 
 ## App Working Video
 
