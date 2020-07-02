@@ -55,7 +55,21 @@ You can build the app with Android Studio or with `./gradlew assembleDebug` comm
 
 
 ## Screenshots
+<div>
+  <img src="https://github.com/Abhishekds94/Amply-Weather/blob/master/screenshots/morning_splash.jpg" width="220">
 
+  <img src="https://github.com/Abhishekds94/Amply-Weather/blob/master/screenshots/morning_dashboard.jpg" width="220">
+
+  <img src="https://github.com/Abhishekds94/Amply-Weather/blob/master/screenshots/morning_locUpdate.jpg" width="220">
+  
+  <img src="https://github.com/Abhishekds94/Amply-Weather/blob/master/screenshots/morning_locUpdateResult.jpg" width="220">
+  
+  <img src="https://github.com/Abhishekds94/Amply-Weather/blob/master/screenshots/morning_locUpdateResultError1.jpg" width="220">
+  
+  <img src="https://github.com/Abhishekds94/Amply-Weather/blob/master/screenshots/morning_locUpdateResultError2.jpg" width="220">
+  
+  <img src="https://github.com/Abhishekds94/Amply-Weather/blob/master/screenshots/morning_locUpdateResultErrorResult.jpg" width="220">
+</div>
 
 
 ## App Working Video
