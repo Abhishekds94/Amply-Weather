@@ -43,6 +43,7 @@ You can build the app with Android Studio or with `./gradlew assembleDebug` comm
 7. [Picasso](https://github.com/square/picasso) - To render the weather icons from the API response
 8. [Admob - Banner Ads](https://developers.google.com/admob/android/banner) - To display Banner Ads in the app
 9. [Esporesso Testing](https://developer.android.com/training/testing/espresso) - To test the UI components of the app
+10. [Flaticon](https://www.flaticon.com/) - For all the icons used in the app
 
 
 ## Applicaiton target platform
