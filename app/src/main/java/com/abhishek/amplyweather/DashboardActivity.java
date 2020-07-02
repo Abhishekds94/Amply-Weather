@@ -1,5 +1,7 @@
 package com.abhishek.amplyweather;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -40,6 +42,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 public class DashboardActivity extends AppCompatActivity {
+
+    private int notificationId = 1;
 
     private static final String TAG = DashboardActivity.class.getSimpleName();
 
@@ -215,6 +219,9 @@ public class DashboardActivity extends AppCompatActivity {
                     String next3iconUrl = next3day.getString("iconLink");
 
                     //Log.e("Next Days","Next days"+next1TemperVal);
+
+                    // to set notification...
+                    gotoNotification(currweather,next2Temper);
 
                     //Picasso to render the weather icons and replace the default image
                     Picasso.with(DashboardActivity.this).load(iconUrl).fit().centerCrop()
@@ -467,6 +474,35 @@ public class DashboardActivity extends AppCompatActivity {
             Log.e("Validating", "Validating Internet");
             super.onPreExecute();
         }
+
+    }
+    //to show notification
+    public void gotoNotification(String temperatureDesc,String comfort) {
+        Intent intent = new Intent(DashboardActivity.this, AlarmReceiver.class);
+        intent.putExtra("notificationId", notificationId);
+        intent.putExtra("temperatureDesc", temperatureDesc);
+        intent.putExtra("comfort", comfort);
+
+//        intent.putExtra("todo", eventid);
+
+        // getBroadcast(context, requestCode, intent, flags)
+        PendingIntent alarmIntent = PendingIntent.getBroadcast(DashboardActivity.this, 0,
+                intent, PendingIntent.FLAG_CANCEL_CURRENT);
+
+        AlarmManager alarm = (AlarmManager) DashboardActivity.this.getSystemService(ALARM_SERVICE);
+
+        Calendar startTime = Calendar.getInstance();
+//        startTime.set(Calendar.DAY_OF_YEAR,year);
+//        startTime.set(Calendar.DAY_OF_MONTH,month);
+//        startTime.set(Calendar.DATE,day);
+
+        startTime.set(Calendar.HOUR_OF_DAY, 7); // at 7:30
+        startTime.set(Calendar.MINUTE, 30);
+        startTime.set(Calendar.SECOND, 0);
+        long alarmStartTime = startTime.getTimeInMillis();
+
+        alarm.set(AlarmManager.RTC_WAKEUP, alarmStartTime, alarmIntent);
+
 
     }
 

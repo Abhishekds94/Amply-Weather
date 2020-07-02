@@ -1,6 +1,8 @@
 package com.abhishek.amplyweather;
 
 import android.Manifest;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -27,13 +29,22 @@ import android.widget.Toast;
 import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity implements LocationListener {
 
@@ -47,6 +58,9 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
 
     //Splash Screen Timer -> 6 seconds (or 6000 mil.seconds)
     private static int SPLASH_TIME_OUT = 6000;
+
+    private StringBuilder dates = new StringBuilder();
+    private int notificationId = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

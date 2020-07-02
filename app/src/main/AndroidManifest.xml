@@ -34,6 +34,8 @@
             </intent-filter>
         </activity>
 
+        <receiver android:name="com.abhishek.amplyweather.AlarmReceiver" />
+
         <!--Initialize Dashboard Activity-->
         <activity android:name=".DashboardActivity"
             android:screenOrientation="portrait"/>

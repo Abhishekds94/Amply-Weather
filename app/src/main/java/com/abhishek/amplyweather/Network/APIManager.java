@@ -1,5 +1,6 @@
 package com.abhishek.amplyweather.Network;
 
+import com.abhishek.amplyweather.MainActivity;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
@@ -45,6 +46,10 @@ public static final MediaType JSON
                             try {
                                 JSONObject obj = new JSONObject(response);
                                 apiResponse.onEventCallBack(obj);
+                                String temperatureDesc = obj.getJSONObject("today").getString("temperatureDesc");
+                                String comfort = obj.getJSONObject("today").getString("comfort");
+
+
                             } catch (JSONException e) {
                                 apiResponse.onEventServerError(e);
                                 e.printStackTrace();

@@ -18,6 +18,7 @@
         android:layout_height="match_parent"
         app:lottie_autoPlay="true"
         app:lottie_fileName="morning.json"
+        android:scaleType="fitXY"
         app:lottie_loop="true"
         app:lottie_speed="3"/>
 
@@ -73,6 +74,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:lottie_autoPlay="true"
+            android:scaleType="fitXY"
             app:lottie_fileName="noon.json"
             app:lottie_loop="true" />
 
@@ -128,6 +130,7 @@
             android:layout_height="match_parent"
             app:lottie_autoPlay="true"
             app:lottie_fileName="night.json"
+            android:scaleType="fitXY"
             app:lottie_loop="true"
             app:lottie_speed="3"/>
 
