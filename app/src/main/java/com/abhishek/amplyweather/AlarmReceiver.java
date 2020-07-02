@@ -39,7 +39,7 @@ public class AlarmReceiver extends BroadcastReceiver {
         // Prepare notification.
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context);
         builder.setStyle(new
-                NotificationCompat.BigTextStyle().bigText("Hey, Today's weather seems to be "+temperatureDesc+" " +
+                NotificationCompat.BigTextStyle().bigText("Hey, today's weather seems to be "+temperatureDesc+" " +
                 "with "+comfort+" \u00B0F. Click here to know more.")) ;
         builder.setSmallIcon(R.drawable.icon)
                 .setLargeIcon(BitmapFactory.decodeResource(context.getResources(), R.drawable.icon))
