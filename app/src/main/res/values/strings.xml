@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">AmplyWeather</string>
+    <string name="amply_weather">Amply Weather</string>
+    <string name="made_with">Made with</string>
+    <string name="divider">||</string>
+    <string name="day">Day</string>
+    <string name="night">Night</string>
+    <string name="title_of_the_notification">Title of the notification</string>
+    <string name="title_description_of_the_notitification_in_collapsed_mode_click_expand_icon_to_expand_it">Title description of the notitification in collapsed mode. click expand icon to expand it.</string>
+    <string name="no_internet">Uho! Looks like the device is not connected to the internet</string>
+    <string name="enterZipText">Enter a valid US zipcode to\n udpate the location</string>
+    <string name="et_hint">Enter a valid Zip Code</string>
+    <string name="update">Update</string>
 </resources>

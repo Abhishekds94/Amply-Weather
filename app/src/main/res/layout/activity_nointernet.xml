@@ -9,7 +9,7 @@
         android:id="@+id/tv_nointernet"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Uho! Looks like the device is not connected to the internet"
+        android:text="@string/no_internet"
         android:textSize="18sp"
         android:textAlignment="center"
         android:layout_marginTop="60dp"
