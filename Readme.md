@@ -56,7 +56,7 @@ You can build the app with Android Studio or with `./gradlew assembleDebug` comm
 
 ## Screenshots
 
-###### Morning UI
+###### Morning UI -
 <div>
   <img src="https://github.com/Abhishekds94/Amply-Weather/blob/master/screenshots/morning_splash.jpg" width="220">
 
@@ -74,7 +74,7 @@ You can build the app with Android Studio or with `./gradlew assembleDebug` comm
 </div>
 
 
-###### Noon UI
+###### Noon UI -
 <div>
   <img src="https://github.com/Abhishekds94/Amply-Weather/blob/master/screenshots/noon_splash.jpg" width="220">
 
@@ -92,7 +92,7 @@ You can build the app with Android Studio or with `./gradlew assembleDebug` comm
 </div>
 
 
-###### Night UI
+###### Night UI -
 <div>
   <img src="https://github.com/Abhishekds94/Amply-Weather/blob/master/screenshots/night_splash.jpg" width="220">
 
